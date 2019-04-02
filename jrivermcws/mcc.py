@@ -11,7 +11,7 @@ doesn't support it so they must be sent via MCWS.
 * Pulled from https://wiki.jriver.com/index.php/Media_Center_Core_Commands#MC_Commands
 with regexp (\d+)\s*(\S+)\s+(.+) -> $1: ('$2', '$3'),
 
-~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
 
 Copyright Michael Adkins 2017
 Distributed under the MIT License.
@@ -550,3 +550,4 @@ mcc_codes = dict()
 
 for (code, (cmd, param)) in _cmds.items():
     mcc_codes[cmd] = code
+

@@ -17,6 +17,7 @@ import xmltodict
 from . import cmds
 from collections import OrderedDict
 
+
 class Result(object):
 
     __attrs__ = [
@@ -44,7 +45,6 @@ class Result(object):
         :raises ValueError: If the response body does not contain valid xml.
         """
         return xmletree.fromstring(self.response.text)
-
 
     def json(self):
         """Convert the xml to json/dictionary"""
@@ -85,19 +85,19 @@ class Result(object):
                 continue
             # Parse non-dictionary items
             if not isinstance(d, OrderedDict):
-                if not 'Items' in r:
+                if 'Items' not in r:
                     r['Items'] = []
                 r['Items'].append(d)
                 continue
             # Parse named items
             if '@Name' in d:
                 name = d['@Name']
-                if not name in r:
+                if name not in r:
                     r[name] = []
                 r[name].append(d['#text'])
             # Parse weird 'Field' items such as for Playlists/List query
             if 'Field' in d:
-                if not 'Fields' in r:
+                if 'Fields' not in r:
                     r['Fields'] = []
                 sr = self.parse_json(d['Field'], collapse_singles)
                 r['Fields'].append(sr)

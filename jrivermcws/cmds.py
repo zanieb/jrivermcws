@@ -2,7 +2,7 @@
 jrivermcws.cmds
 ~~~~~~~~~~~~~~~
 
-Contains details of all MCWS commands and some functions to help 
+Contains details of all MCWS commands and some functions to help
 extract information about them
 
 
@@ -14,10 +14,11 @@ Copyright Michael Adkins 2017
 Distributed under the MIT License.
 See accompanying file LICENSE.md file or copy at http://opensource.org/licenses/MIT
 
+
 """
 
 _functions = {
-  
+
   'Meta': { 'Alive': { 'desc': 'Simple query to ensure the server is running and to check versions.',
                        'params': [],
                        'response': [
@@ -755,8 +756,10 @@ _functions = {
                                              'SelectionDisplayName: The display name of the current selection.']}}
   }
 
+
 from .exceptions import BadCommandException, NullCommandException
 from requests.structures import CaseInsensitiveDict
+
 
 # Make function details available
 details = CaseInsensitiveDict(name='command_details')
@@ -783,7 +786,9 @@ def categoryof(cmd):
     else:
         return None
 
+
 # Helper functions for command details
+
 
 def param_count(command, category=None):
 
@@ -793,8 +798,9 @@ def param_count(command, category=None):
         category = categorybycommand(command)
     if category == None:
         raise BadCommandException
-    
+
     return len(details[category][command]['params'])
+
 
 def expected_response_count(command, category=None):
 
@@ -804,9 +810,8 @@ def expected_response_count(command, category=None):
         category = categorybycommand(command)
     if category == None:
         raise BadCommandException
-    
-    return len(details[category][command]['response'])
 
+    return len(details[category][command]['response'])
 
 
 """
