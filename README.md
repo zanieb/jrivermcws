@@ -106,7 +106,9 @@ artist = 'Radiohead'
 r = jr.request('Values', Field='Album', Files="[Album Artist (auto)]=[{}]".format(artist))
 ```
 
-## Set genre info for a bunch of files (THIS WILL PERMANENTLY MODIFY YOUR LIBRARY, please be careful)
+## Set genre info for a bunch of files
+
+THIS WILL PERMANENTLY MODIFY YOUR LIBRARY, please be careful
 ```
 for f in files:
     jr.request('SetInfo', File=f, FileType='Filename', Field='Genre', Value='GOOOD_MUSIC')
