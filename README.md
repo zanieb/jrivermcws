@@ -91,7 +91,8 @@ mz@mzxps:~ > jriverctl --auth mz pass -m 10023 4
 ## Get all artists
 
 ```
-r = jr.request('Values', Field='Album Artist (auto)', Files='')
+def get_jriver_artists():
+    r = jr.request('Values', Field='Album Artist (auto)')
     if not r:
         return None
     p = r.parsed()
@@ -102,6 +103,11 @@ r = jr.request('Values', Field='Album Artist (auto)', Files='')
 
 ```
 artist = 'Radiohead'
-r = jr.request('Values', Field='Album', Files="[Album Artist (auto)]=[{}] {}".format(artist, ''))
+r = jr.request('Values', Field='Album', Files="[Album Artist (auto)]=[{}]".format(artist))
 ```
 
+## Set genre info for a bunch of files (THIS WILL PERMANENTLY MODIFY YOUR LIBRARY, please be careful)
+```
+for f in files:
+    jr.request('SetInfo', File=f, FileType='Filename', Field='Genre', Value='GOOOD_MUSIC')
+```
