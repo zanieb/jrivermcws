@@ -10,12 +10,14 @@ requests
 
 ## Installation
 
-`pip install jrivermcws`
+`pip install jrivermcws` -- This is not on the PyPy index but will be added when I have time (soon)
 
 or
 
-`git clone ...`
-`pip install -e jrivermcws`
+```
+git clone https://github.com/mikeza/jrivermcws.git
+pip install -e jrivermcws
+```
 
 ## Provides
 
