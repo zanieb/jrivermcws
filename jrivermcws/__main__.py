@@ -20,12 +20,6 @@ def main():
     parser = setup_parser()
     opts = parser.parse_args()
 
-    try:
-        request('Alive')
-    except Exception as e:
-        print("Could not establish connection to JRiver. Verify MCWS is running.\n", e)
-        return
-
     token = None
     if opts.auth:
         username, password = opts.auth
@@ -36,6 +30,15 @@ def main():
                 token = authenticate(username, password)
         except FailedAuthenticationException as e:
             print("Failed to authenticate connection to JRiver\n", e)
+            return
+        except Exception as e:
+            print("Could not establish connection to JRiver. Verify MCWS is running.\n", e)
+            return
+    else:
+        try:
+            request('Alive')
+        except Exception as e:
+            print("Could not establish connection to JRiver. Verify MCWS is running and authentication is not required.\n", e)
             return
 
     r = None
